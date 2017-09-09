@@ -13,6 +13,13 @@
 		mosq = new Mosquitto();
 
 		$("#conectar").click(function() {
+
+			$(this).text('Conectando...');
+
+			var temporizador = setTimeout(function() {
+				$("#conectar").html("<i class='fa fa-check' aria-hidden='true'></i> Conectar");
+			}, 1000);
+
 			return _this.connect();
 		});
 
@@ -21,6 +28,12 @@
 			Use Publish quando quiser enviar publicações 
 			para o Broker e do broker para o seu Embarcado
 			*/
+
+			$(this).text('Aplicando...');
+
+			var temporizador = setTimeout(function() {
+				$("#aplicar").html("<i class='fa fa-check' aria-hidden='true'></i> Aplicar");
+			}, 1000);
 
             _this.temperatura_minima();
             _this.temperatura_maxima();
