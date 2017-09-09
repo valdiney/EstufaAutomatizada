@@ -79,8 +79,8 @@
 					<div style="padding:10px">
 						<p>Tempo de luz:</p>
 						<input id="tempo_luz" type="text" data-slider-min="0" 
-						data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
-	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_tempo_luz">0</span></span>
+						data-slider-max="23" data-slider-step="1" data-slider-value="0"/>
+	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_tempo_luz">0h</span></span>
 					</div>
 					
 				</div>
@@ -132,11 +132,10 @@
 
 		$("#tempo_luz").slider();
 			$("#tempo_luz").on("slide", function(slideEvt) {
-				$("#show_valor_tempo_luz").text(slideEvt.value + "%");
+				$("#show_valor_tempo_luz").text(slideEvt.value + "h");
 		});
 
-
-	  });
+	});
 	</script>
 </body>
 </html>
