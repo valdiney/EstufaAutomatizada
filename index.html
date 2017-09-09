@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Estufa</title>
+	<link rel="icon" type="image/png" href="https://s3.amazonaws.com/wifiaqui/img_html/favicon.png" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 my-content content-top" align="center">
+				<h3>Estufa Automatizada</h3>
+			</div>
+
+			<div class="col-sm-4 my-content content-top content-information-service" align="center">
+				<div style="padding:10px" id="body-information">
+					<b>Estatus de serviço:</b>
+					<p class="status_conectado">Desconectado do Broker</p>
+				</div>
+			</div>
+
+			<div class="col-sm-4 my-content" align="center" style="padding-top:10px;">
+
+				<div style="border:1px solid #e4e4e4;border-radius:2px;margin-bottom:10px;">
+					<div style="padding:10px">
+						<p>Controle de comunicação com o Broker</p>
+						<div class="btn-group btn-group-justified">
+						  <a href="#" id="conectar" class="btn btn-primary">
+						  	<i class="fa fa-check" aria-hidden="true"></i> Conectar
+						  </a>
+						  <a href="#" id="aplicar" class="btn btn-primary" style="background:#47c5ba;">
+						  	<i class="fa fa-check" aria-hidden="true"></i> Aplicar
+						  </a>
+						</div>
+					</div>
+			    </div>
+
+				<div style="border:1px solid #e4e4e4;border-radius:2px;">
+					<div style="padding:10px">
+					    <b>Controles:</b>
+				    </div>
+
+					<div style="padding:10px">
+						<p>Temperatura mínima:</p>
+						<input id="temperatura_minima" type="text" data-slider-min="0" 
+						data-slider-max="50" data-slider-step="1" data-slider-value="0"/>
+	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_temperatura_minima">0º</span></span>
+					</div>
+
+					<div style="padding:10px">
+						<p>Temperatura máxima:</p>
+						<input id="temperatura_maxima" type="text" data-slider-min="0" 
+						data-slider-max="50" data-slider-step="1" data-slider-value="0"/>
+	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_temperatura_maxima">0º</span></span>
+					</div>
+
+					<div style="padding:10px">
+						<p>Umidade minima:</p>
+						<input id="umidade_minima" type="text" data-slider-min="0" 
+						data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
+	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_umidade_minima">0º</span></span>
+					</div>
+
+					<div style="padding:10px">
+						<p>Umidade máxima:</p>
+						<input id="umidade_maxima" type="text" data-slider-min="0" 
+						data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
+	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_umidade_maxima">0º</span></span>
+					</div>
+
+					<div style="padding:10px">
+						<p>Tempo de luz:</p>
+						<input id="tempo_luz" type="text" data-slider-min="0" 
+						data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
+	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_tempo_luz">0º</span></span>
+					</div>
+					
+				</div>
+
+				<br>
+				<br>
+
+			</div>
+
+			<div class="col-sm-4 my-content content-top content-footer" align="center">
+				<div style="padding:10px">
+					<b>Layout teste</b>
+				</div>
+			</div>
+
+		</div>
+		
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/mosquitto.js"></script>
+	<script src="js/core.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>
+
+	<script>
+	  $(function() {
+
+	  	$("#temperatura_minima").slider();
+			$("#temperatura_minima").on("slide", function(slideEvt) {
+				$("#show_valor_temperatura_minima").text(slideEvt.value + "º");
+		});
+
+		$("#temperatura_maxima").slider();
+			$("#temperatura_maxima").on("slide", function(slideEvt) {
+				$("#show_valor_temperatura_maxima").text(slideEvt.value + "º");
+		});
+
+		$("#umidade_minima").slider();
+			$("#umidade_minima").on("slide", function(slideEvt) {
+				$("#show_valor_umidade_minima").text(slideEvt.value + "%");
+		});
+
+		$("#umidade_maxima").slider();
+			$("#umidade_maxima").on("slide", function(slideEvt) {
+				$("#show_valor_umidade_maxima").text(slideEvt.value + "%");
+		});
+
+		$("#tempo_luz").slider();
+			$("#tempo_luz").on("slide", function(slideEvt) {
+				$("#show_valor_tempo_luz").text(slideEvt.value + "%");
+		});
+
+
+	  });
+	</script>
+</body>
+</html>

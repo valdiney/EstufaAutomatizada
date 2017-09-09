@@ -1,0 +1,40 @@
+body {
+	background:#536474;
+}
+
+.my-content {
+	min-height:300px;
+	background:white;
+	float: none;
+    margin: 0 auto;
+    border-bottom:5px solid #47c5ba;
+}
+
+.content-top {
+	background:#615995;
+	min-height:60px;
+}
+
+.content-footer {
+	background:#4a437d;
+	min-height:60px;
+	border:0;
+	color:white;
+	margin-bottom:20px;
+}
+
+.content-top h1, h2, h3 {
+	margin:0;
+	color:white;
+	text-align:center;
+	display:block;
+	padding-top:15px;
+	padding-bottom:10px;
+}
+
+.content-information-service {
+	margin-top:0;
+	margin-bottom:0;
+	background:white;
+	border-bottom:1px solid silver;
+}
