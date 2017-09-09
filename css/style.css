@@ -20,6 +20,10 @@ body {
 	min-height:60px;
 }
 
+.content-top-first {
+	background-image:url('img/fundo_top.gif')!important;
+}
+
 .content-footer {
 	background:#4a437d;
 	min-height:60px;
