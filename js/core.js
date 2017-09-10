@@ -39,7 +39,7 @@
             _this.temperatura_maxima();
             _this.umidade_minima();
             _this.umidade_maxima();
-            _this.tempo_luz();
+            _this.horas_ligado();
 
 			console.log("Aplicando...");
 		});
@@ -55,7 +55,7 @@
 			mosq.subscribe("temperatura_maxima", 0);
 			mosq.subscribe("umidade_minima", 0);
 			mosq.subscribe("umidade_maxima", 0);
-			mosq.subscribe("tempo_luz", 0);
+			mosq.subscribe("horas_ligado", 0);
             
             $(".status_conectado").hide();
 			$("#body-information").append("<p class='status_conectado'>Conectado ao Broker.</p>");
@@ -103,8 +103,21 @@
 		mosq.publish("umidade_maxima", $("#umidade_maxima").val(), 0);
 	}
 
-	Broker.prototype.tempo_luz = function() {
-		mosq.publish("tempo_luz", $("#tempo_luz").val(), 0);
+	Broker.prototype.horas_ligado = function() {
+		var desmembrar_horas = $("#intervalo_hora").val().split(","),
+		    hora_inicio = Number(desmembrar_horas[0]),
+		    hora_fim = Number(desmembrar_horas[1]),
+		    horas_ligado = null;
+
+	    if (hora_inicio > hora_fim) {
+	    	horas = hora_inicio - hora_fim;
+	    }
+
+	    if (hora_fim > hora_inicio) {
+	    	horas_ligado = hora_fim - hora_inicio;
+	    }
+
+		mosq.publish("horas_ligado", horas_ligado, 0);
 	}
 
 	return Broker;

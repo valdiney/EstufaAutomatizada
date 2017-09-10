@@ -76,11 +76,13 @@
 	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_umidade_maxima">0%</span></span>
 					</div>
 
-					<div style="padding:10px">
-						<p>Tempo de luz:</p>
-						<input id="tempo_luz" type="text" data-slider-min="0" 
-						data-slider-max="23" data-slider-step="1" data-slider-value="0"/>
-	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_tempo_luz">0h</span></span>
+					<hr>
+
+					 <div style="padding:10px">
+						<p>Intervalo de horas:</p>
+						<input id="intervalo_hora" type="text" class="span2" value="" 
+						 data-slider-min="0" data-slider-max="23" 
+						 data-slider-value="[0,23]"/> <b id="show"></b>
 					</div>
 					
 				</div>
@@ -130,9 +132,9 @@
 				$("#show_valor_umidade_maxima").text(slideEvt.value + "%");
 		});
 
-		$("#tempo_luz").slider();
-			$("#tempo_luz").on("slide", function(slideEvt) {
-				$("#show_valor_tempo_luz").text(slideEvt.value + "h");
+		$("#intervalo_hora").slider();
+		   $("#intervalo_hora").on("slide", function(slideEvt) {
+				$("#show").text(slideEvt.value + "h");
 		});
 
 	});
