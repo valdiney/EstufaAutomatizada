@@ -50,7 +50,7 @@
 			Publish enviado pelo seu Embarcado
 			*/
 			
-			/*Assina os retornos dos publish´s*/
+			/*Assina os retornos dos publish´s*/ 
 			mosq.subscribe("temperatura_minima", 0);
 			mosq.subscribe("temperatura_maxima", 0);
 			mosq.subscribe("umidade_minima", 0);
@@ -122,7 +122,7 @@
 		    horas_ligado = null;
 
 	    if (hora_inicio > hora_fim) {
-    	    horas = hora_inicio - hora_fim;
+    	    horas_ligado = hora_inicio - hora_fim;
 	    }
 
 	    if (hora_fim > hora_inicio) {
@@ -137,4 +137,4 @@
 })();
 
 var broker = new Broker();
-broker.connect();
+//broker.connect();

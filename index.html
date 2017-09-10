@@ -44,33 +44,40 @@
 			    </div>
 
 				<div style="border:1px solid #e4e4e4;border-radius:2px;">
-					<div style="padding:10px">
-					    <b>Controles de usabilidade:</b>
-				    </div>
+			
+				    <div style="padding:10px">
+                    	<b class="b-informativo">Temperatura ambiente</b>
+                    </div>
 
 					<div style="padding:10px">
-						<p>Temperatura mínima:</p>
+						<p>Mínima:</p>
 						<input id="temperatura_minima" type="text" data-slider-min="0" 
 						data-slider-max="50" data-slider-step="1" data-slider-value="0"/>
-	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_temperatura_minima">0º</span></span>
+	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_temperatura_minima">°C</span></span>
 					</div>
 
 					<div style="padding:10px">
-						<p>Temperatura máxima:</p>
+						<p>Máxima:</p>
 						<input id="temperatura_maxima" type="text" data-slider-min="0" 
 						data-slider-max="50" data-slider-step="1" data-slider-value="0"/>
-	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_temperatura_maxima">0º</span></span>
+	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_temperatura_maxima">°C</span></span>
 					</div>
+                    
+                    <hr>
 
+                    <div style="padding:10px">
+                    	<b class="b-informativo">Umidade do solo</b>
+                    </div>
+            
 					<div style="padding:10px">
-						<p>Umidade minima:</p>
+						<p>Minima:</p>
 						<input id="umidade_minima" type="text" data-slider-min="0" 
 						data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
 	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_umidade_minima">0%</span></span>
 					</div>
 
 					<div style="padding:10px">
-						<p>Umidade máxima:</p>
+						<p>Máxima:</p>
 						<input id="umidade_maxima" type="text" data-slider-min="0" 
 						data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
 	                   <span id="ex6CurrentSliderValLabel"><span id="show_valor_umidade_maxima">0%</span></span>
@@ -78,11 +85,15 @@
 
 					<hr>
 
-					 <div style="padding:10px">
+					<div style="padding:10px">
+                    	<b class="b-informativo">Horas que a lâmpada ambiente ficará ligada</b>
+                    </div>
+
+					<div style="padding:10px">
 						<p>Intervalo de horas:</p>
 						<input id="intervalo_hora" type="text" class="span2" value="" 
 						 data-slider-min="0" data-slider-max="23" 
-						 data-slider-value="[0,23]"/> <b id="show"></b>
+						 data-slider-value="[0,23]"/> <span id="show">0h 23h</span>
 					</div>
 					
 				</div>
@@ -94,7 +105,7 @@
 
 			<div class="col-sm-4 my-content content-top content-footer" align="center">
 				<div style="padding:10px">
-					<b>Layout teste</b>
+					<b></b>
 				</div>
 			</div>
 
@@ -114,12 +125,12 @@
 
 	  	$("#temperatura_minima").slider();
 			$("#temperatura_minima").on("slide", function(slideEvt) {
-				$("#show_valor_temperatura_minima").text(slideEvt.value + "º");
+				$("#show_valor_temperatura_minima").text(slideEvt.value + "°C");
 		});
 
 		$("#temperatura_maxima").slider();
 			$("#temperatura_maxima").on("slide", function(slideEvt) {
-				$("#show_valor_temperatura_maxima").text(slideEvt.value + "º");
+				$("#show_valor_temperatura_maxima").text(slideEvt.value + "°C");
 		});
 
 		$("#umidade_minima").slider();
@@ -134,7 +145,8 @@
 
 		$("#intervalo_hora").slider();
 		   $("#intervalo_hora").on("slide", function(slideEvt) {
-				$("#show").text(slideEvt.value + "h");
+		   	    var horas = slideEvt.value;
+				$("#show").text(horas[0] + "h" + " " + horas[1] + "h");
 		});
 
 	});
