@@ -55,6 +55,7 @@
 			mosq.subscribe("temperatura_maxima", 0);
 			mosq.subscribe("umidade_minima", 0);
 			mosq.subscribe("umidade_maxima", 0);
+			mosq.subscribe("hora_inicio", 0);
 			mosq.subscribe("horas_ligado", 0);
             
             $(".status_conectado").hide();
@@ -104,20 +105,31 @@
 	}
 
 	Broker.prototype.horas_ligado = function() {
+		
+		var calcula_horas = this.calcula_horas(),
+		    hora_inicio = calcula_horas["hora_inicio"],
+		    horas_ligado = calcula_horas["horas_ligado"];
+
+        mosq.publish("hora_inicio", hora_inicio, 0);
+		mosq.publish("horas_ligado", horas_ligado, 0);
+	}
+    
+    /*Método realiza o calculo de interalo de horas*/
+	Broker.prototype.calcula_horas = function() {
 		var desmembrar_horas = $("#intervalo_hora").val().split(","),
 		    hora_inicio = Number(desmembrar_horas[0]),
 		    hora_fim = Number(desmembrar_horas[1]),
 		    horas_ligado = null;
 
 	    if (hora_inicio > hora_fim) {
-	    	horas = hora_inicio - hora_fim;
+    	    horas = hora_inicio - hora_fim;
 	    }
 
 	    if (hora_fim > hora_inicio) {
 	    	horas_ligado = hora_fim - hora_inicio;
 	    }
-
-		mosq.publish("horas_ligado", horas_ligado, 0);
+        
+        return {hora_inicio: hora_inicio, horas_ligado: horas_ligado};
 	}
 
 	return Broker;
