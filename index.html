@@ -94,6 +94,9 @@
 						<input id="intervalo_hora" type="text" class="span2" value="" 
 						 data-slider-min="0" data-slider-max="23" 
 						 data-slider-value="[0,23]"/> <span id="show">0h 23h</span>
+						 <br>
+						 <br>
+						 <span style="opacity:0.60;" id="show_horas_ligado"></span>
 					</div>
 					
 				</div>
@@ -147,6 +150,16 @@
 		   $("#intervalo_hora").on("slide", function(slideEvt) {
 		   	    var horas = slideEvt.value;
 				$("#show").text(horas[0] + "h" + " " + horas[1] + "h");
+
+				var horas_ligado = false;
+
+				if (horas[0] > horas[1]) {
+					horas_ligado = horas[0] - horas[1];
+				} else {
+					horas_ligado = horas[1] - horas[0];
+				}
+
+				$("#show_horas_ligado").text("Ficará ligado durante: " + horas_ligado + "h");
 		});
 
 	});
